@@ -1,4 +1,4 @@
-01 Tower of hanoi
+----------------------------01 Tower of hanoi----------------------------------------------------------
 
 def tower_of_hanoi(n, source, auxiliary, target):
     if n == 1:
@@ -12,7 +12,7 @@ num_disks = int(input("Enter the number of disks: "))
 tower_of_hanoi(num_disks, 'A', 'B', 'C')
 
 
-02 Breadth First Search
+----------------------------02 Breadth First Search--------------------------------------------------------
 
 from collections import deque
 def bfs(graph, start_node):
@@ -46,7 +46,7 @@ bfs(graph,start_node)
 
 
 
-3 Depth- First Search
+---------------------------3 Depth- First Search----------------------------------------------
 
 from collections import defaultdict
 class Graph:
@@ -87,7 +87,7 @@ print("Depth-First Search:")
 graph.dfs(7, visited)
 
 
-04 Travelling Sales man
+------------------04 Travelling Sales man-------------------------------------------------------------------------------
 
 import itertools
 
@@ -126,3 +126,185 @@ shortest_tour, shortest_distance = traveling_salesman_bruteforce(distances)
 print("Shortest Tour:", shortest_tour)
 print("Shortest Distance:", shortest_distance)
 
+
+----05 Create and Load---------------------------------------------------------------------------------------------------
+
+import statistics
+
+# Create and load a dataset
+dataset = [10, 20, 30, 40, 50, 60, 70, 80, 90, 15,
+           25, 35, 45, 55, 65, 75, 85,95,77,90, 99,
+            100]
+
+# Calculate statistics
+mean = statistics.mean(dataset)
+median = statistics.median(dataset)
+mode_value = statistics.mode(dataset)
+variance = statistics.variance(dataset)
+std_dev = statistics.stdev(dataset)
+
+# Finding the result 
+print("Dataset Statistics:")
+print(f"Mean: {mean}")
+print(f"Median: {median}")
+print(f"Mode: {mode_value}")
+print(f"Variance: {variance}")
+print(f"Standard Deviation: {std_dev}")
+
+
+
+--------------------------------------06 regression Line----------------------------------------------------------
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Sample data
+x = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+y = np.array([2, 3, 5, 6, 5, 8, 9, 10, 11, 12,13])
+
+# Perform linear regression
+slope, intercept = np.polyfit(x, y, 1)
+
+# Predict the y values using the regression line
+y_pred = slope * x + intercept
+
+# Plot the data and regression line
+plt.scatter(x, y, label='Data Points')
+plt.plot(x, y_pred, color='red', label='Regression Line')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.legend()
+plt.show()
+
+
+
+-------------------07 Find S Algorithm-------------------------------------------------------------
+# the hypothesis with the most specific values
+hypothesis = None
+# function to check if an example is consistent with the hypothesis
+def is_consistent(example, hypothesis):
+    for i in range(len(hypothesis)):
+        if hypothesis[i] != '?' and hypothesis[i] != example[i]:
+            return False
+    return True
+# Find-S algorithm
+def find_s(training_data):
+    global hypothesis
+    for example in training_data:
+        x, y = example[:-1], example[-1]
+        # If it's a positive example, update the hypothesis
+        if y == 'Yes':
+            if hypothesis is None:
+                hypothesis = list(x)
+            else:
+                for i in range(len(hypothesis)):
+                    if x[i] != hypothesis[i]:
+                        hypothesis[i] = '?'
+#the training data
+training_data = [
+    ['Sunny', 'Warm', 'Normal', 'Strong', 'No'],
+    ['Sunny', 'Warm', 'High', 'Strong', 'No'],
+    ['Cloudy','Cold', 'High', 'Weak', 'Yes'],
+    ['Rainy', 'Cold', 'High', 'Weak', 'No'],
+    ['Thunderstron', 'raining', 'High', 'Weak', 'Yes'],
+    ['Rainy', 'Cold', 'High', 'Weak', 'No']
+]
+# Apply algorithm
+find_s(training_data)
+# Print the final hypothesis
+print("Final Hypothesis:", hypothesis)
+
+
+-----------------------------08 Sayeeda khan------------------
+import pandas as pd
+import numpy as np
+from sklearn import svm, datasets
+import matplotlib.pyplot as plt 
+
+
+iris = datasets.load_iris()
+
+
+X = iris.data[:, :2]
+y = iris.target
+
+
+x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+h = (x_max / x_min)/100
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+X_plot = np.c_[xx.ravel(), yy.ravel()]
+
+
+C = 1.0
+
+
+Svc_classifier = svm.SVC(kernel='linear', C=C).fit(X, y)
+Z = Svc_classifier.predict(X_plot)
+Z = Z.reshape(xx.shape)
+plt.figure(figsize=(20, 5))
+plt.subplot(121)
+plt.contourf(xx, yy, Z, cmap=plt.cm.tab10, alpha=0.3)
+plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.Set1)
+plt.xlabel('Sepal length')
+plt.ylabel('Sepal width')
+plt.xlim(xx.min(), xx.max())
+plt.title('Support Vector Classifier with linear kernel')
+
+
+
+Svc_classifier = svm.SVC(kernel = 'rbf', gamma ='auto',C = C).fit(X, y)
+Z = Svc_classifier.predict(X_plot)
+Z = Z.reshape(xx.shape)
+plt.figure(figsize=(15, 5))
+plt.subplot(121)
+plt.contourf(xx, yy, Z, cmap = plt.cm.tab10, alpha = 0.3)
+plt.scatter(X[:, 0], X[:, 1], c = y, cmap = plt.cm.Set1)
+plt.xlabel('Sepal length')
+plt.ylabel('Sepal width')
+plt.xlim(xx.min(), xx.max())
+plt.title('Support Vector Classifier with rbf kernel')
+
+
+
+--------------------------------------------08 Me------------------------------------------------
+
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import svm
+
+
+# linear data
+X = np.array([1, 5, 1.5, 8, 1, 9, 7, 8.7, 2.3, 5.5, 7.7, 6.1])
+y = np.array([2, 8, 1.8, 8, 0.6, 11, 10, 9.4, 4, 3, 8.8, 7.5])
+
+
+# show unclassified data
+plt.scatter(X, y)
+plt.show()
+
+
+# shaping data for training the model
+training_X = np.vstack((X, y)).T
+training_y = [0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1]
+
+
+# define the model
+clf = svm.SVC(kernel='linear', C=1.0)
+
+
+
+# train the model
+clf.fit(training_X, training_y)
+# get the weight values for the linear equation from the trained SVM model
+w = clf.coef_[0]
+# get the y-offset for the linear equation
+a = -w[0] / w[1]
+# make the x-axis space for the data points
+XX = np.linspace(0, 13)
+# get the y-values to plot the decision boundary
+yy = a * XX - clf.intercept_[0] / w[1]
+# plot the decision boundary
+plt.plot(XX, yy, 'k-')
+# show the plot visually
+plt.scatter(training_X[:, 0], training_X[:, 1], c=training_y)
+plt.show()
