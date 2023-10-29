@@ -2,7 +2,8 @@ import statistics
 
 # Create and load a dataset
 dataset = [10, 20, 30, 40, 50, 60, 70, 80, 90, 15,
-           25, 35, 45, 55, 65, 75, 85,95]
+           25, 35, 45, 55, 65, 75, 85,95,77,90, 99,
+            100]
 
 # Calculate statistics
 mean = statistics.mean(dataset)

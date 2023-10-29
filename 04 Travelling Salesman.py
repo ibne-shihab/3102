@@ -32,5 +32,6 @@ def traveling_salesman_bruteforce(distances):
 
     return shortest_tour, shortest_distance
 shortest_tour, shortest_distance = traveling_salesman_bruteforce(distances)
+
 print("Shortest Tour:", shortest_tour)
 print("Shortest Distance:", shortest_distance)

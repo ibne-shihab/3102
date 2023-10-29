@@ -24,5 +24,6 @@ graph = {
     5: [0],
     6: [4]
 }
-print("Breadth First Traversal (starting from node 6):", end=' ')
-bfs(graph, 6)
+start_node=int(input("Enter the node from where you want to start: "))
+print("Breadth First Traversal (starting from node",start_node ,"):", end=' ')
+bfs(graph,start_node)

@@ -21,9 +21,11 @@ def find_s(training_data):
                         hypothesis[i] = '?'
 #the training data
 training_data = [
-    ['Sunny', 'Warm', 'Normal', 'Strong', 'Yes'],
-    ['Sunny', 'Warm', 'High', 'Strong', 'Yes'],
-    ['Cloudy', 'Cold', 'High', 'Weak', 'No'],
+    ['Sunny', 'Warm', 'Normal', 'Strong', 'No'],
+    ['Sunny', 'Warm', 'High', 'Strong', 'No'],
+    ['Cloudy','Cold', 'High', 'Weak', 'Yes'],
+    ['Rainy', 'Cold', 'High', 'Weak', 'No'],
+    ['Thunderstron', 'raining', 'High', 'Weak', 'Yes'],
     ['Rainy', 'Cold', 'High', 'Weak', 'No']
 ]
 # Apply algorithm
